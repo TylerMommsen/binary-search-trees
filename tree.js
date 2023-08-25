@@ -83,4 +83,24 @@ export default class Tree {
             return this.find(dataToFind, root.right);
         }
     }
+
+    levelOrder(func = null, root = this.root) {
+        if (root === null) {
+            return root;
+        }
+        let order = [];
+        let queue = [];
+        queue.push(root);
+        while (queue.length > 0) {
+            let currentNode = queue.shift();
+            order.push(currentNode);
+            if (currentNode.left !== null) {
+                queue.push(currentNode.left);
+            }
+            if (currentNode.right !== null) {
+                queue.push(currentNode.right);
+            }
+        }
+        return order;
+    }
 }

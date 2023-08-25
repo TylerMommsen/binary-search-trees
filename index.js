@@ -15,9 +15,13 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 
 let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let BST = new Tree(array);
-BST.insert(40);
-BST.delete(2);
 
 prettyPrint(BST.root);
 
-console.log(BST.find(4));
+let arr = BST.levelOrder();
+let dataInArr = [];
+
+arr.forEach(item => {
+    dataInArr.push(item.data);
+});
+console.log(dataInArr);
