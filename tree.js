@@ -15,4 +15,19 @@ export default class Tree {
 
         return root;
     }
+
+    insert(root, data) {
+        if (root === null) {
+            root = new Node(data);
+            return root;
+        }
+
+        if (data < root.data) {
+            root.left = this.insert(root.left, data);
+        } else if (data > root.data) {
+            root.right = this.insert(root.right, data);
+        }
+
+        return root;
+    }
 }
