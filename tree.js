@@ -30,4 +30,45 @@ export default class Tree {
 
         return root;
     }
+
+    delete(root, dataToRemove) {
+        if (root === null) {
+            return root;
+        }
+
+        // find node to be deleted
+        if (dataToRemove < root.data) {
+            root.left = this.delete(root.left, dataToRemove);
+            return root;
+        } else if (dataToRemove > root.data) {
+            root.right = this.delete(root.right, dataToRemove);
+            return root;
+        }
+        
+        // found node to be deleted, now check children
+        if (root.left === null) {
+            return root.right;
+        } else if (root.right === null) {
+            return root.left;
+        } else { // if both children exist
+            let succParent = root;
+
+            // find successor
+            let succ = root.right;
+            while (succ.left !== null) {
+                succParent = succ;
+                succ = succ.left;
+            }
+
+            if (succParent !== root) {
+                succParent.left = succ.right;
+            } else {
+                succParent.right = succ.right;
+            }
+
+            root.data = succ.data;
+
+            return root;
+        }
+    }
 }

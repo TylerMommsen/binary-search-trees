@@ -16,5 +16,6 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let BST = new Tree(array);
 BST.insert(BST.root, 40);
+BST.delete(BST.root, 2);
 
 prettyPrint(BST.root);
