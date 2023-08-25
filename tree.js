@@ -16,32 +16,32 @@ export default class Tree {
         return root;
     }
 
-    insert(root, data) {
+    insert(dataToAdd, root = this.root) {
         if (root === null) {
-            root = new Node(data);
+            root = new Node(dataToAdd);
             return root;
         }
 
-        if (data < root.data) {
-            root.left = this.insert(root.left, data);
-        } else if (data > root.data) {
-            root.right = this.insert(root.right, data);
+        if (dataToAdd < root.data) {
+            root.left = this.insert(dataToAdd, root.left);
+        } else if (dataToAdd > root.data) {
+            root.right = this.insert(dataToAdd, root.right);
         }
 
         return root;
     }
 
-    delete(root, dataToRemove) {
+    delete(dataToRemove, root = this.root) {
         if (root === null) {
             return root;
         }
 
         // find node to be deleted
         if (dataToRemove < root.data) {
-            root.left = this.delete(root.left, dataToRemove);
+            root.left = this.delete(dataToRemove, root.left);
             return root;
         } else if (dataToRemove > root.data) {
-            root.right = this.delete(root.right, dataToRemove);
+            root.right = this.delete(dataToRemove, root.right);
             return root;
         }
         
@@ -69,6 +69,18 @@ export default class Tree {
             root.data = succ.data;
 
             return root;
+        }
+    }
+
+    find(dataToFind, root = this.root) {
+        if (root === null || root.data === dataToFind) {
+            return root;
+        }
+
+        if (dataToFind < root.data) {
+            return this.find(dataToFind, root.left);
+        } else if (dataToFind > root.data) {
+            return this.find(dataToFind, root.right);
         }
     }
 }
