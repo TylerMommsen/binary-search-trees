@@ -120,4 +120,20 @@ export default class Tree {
         dfs(root);
         return resultOrder;
     }
+
+    inorder(root = this.root) {
+        let resultOrder = [];
+
+        function dfs(root) {
+            if (root === null) {
+                return root;
+            }
+            dfs(root.left);
+            resultOrder.push(root);
+            dfs(root.right);
+        }
+
+        dfs(root);
+        return resultOrder;
+    }
 }
