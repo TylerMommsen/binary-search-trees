@@ -183,5 +183,32 @@ export default class Tree {
     
         const rightDepth = getDepth(root.right, node, depth + 1);
         return rightDepth;
+     }
+    
+    isBalanced(root = this.root) {
+        if (root === null) {
+            return true; // an empty tree is balanced
+        }
+
+        const leftHeight = this.height(root.left);
+        const rightHeight = this.height(root.right);
+
+        if (Math.abs(leftHeight - rightHeight) > 1) {
+            return false;
+        }
+
+        return this.isBalanced(root.left) && this.isBalanced(root.right);
+    }
+
+    rebalance(root = this.root) {
+        if (this.root === null) return;
+        let treeNodes = this.inorder();
+        let dataInNodes = [];
+
+        treeNodes.forEach(node => {
+            dataInNodes.push(node.data);
+        });
+
+        this.root = this.buildTree(dataInNodes, 0, dataInNodes.length - 1);
     }
 }
