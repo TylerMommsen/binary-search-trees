@@ -20,8 +20,8 @@ prettyPrint(BST.root);
 
 // let arr = BST.levelOrder();
 // let arr = BST.preorder();
-let arr = BST.inorder();
-// let arr = BST.postorder();
+// let arr = BST.inorder();
+let arr = BST.postorder();
 let dataInArr = [];
 
 arr.forEach(item => {

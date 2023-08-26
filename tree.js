@@ -136,4 +136,20 @@ export default class Tree {
         dfs(root);
         return resultOrder;
     }
+
+    postorder(root = this.root) {
+        let resultOrder = [];
+
+        function dfs(root) {
+            if (root === null) {
+                return root;
+            }
+            dfs(root.left);
+            dfs(root.right);
+            resultOrder.push(root);
+        }
+
+        dfs(root);
+        return resultOrder;
+    }
 }
