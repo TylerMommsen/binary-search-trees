@@ -22,7 +22,7 @@ prettyPrint(BST.root);
 // let arr = BST.preorder();
 // let arr = BST.inorder();
 // let arr = BST.postorder();
-console.log(BST.height());
+// console.log(BST.height());
 // let dataInArr = [];
 
 // arr.forEach(item => {

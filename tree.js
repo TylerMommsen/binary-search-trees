@@ -166,4 +166,22 @@ export default class Tree {
     
         return Math.max(leftHeight, rightHeight) + 1;
     }
+
+     depth(root = this.root, node, depth = 0) {
+        if (root === null) {
+            return -1; // Node not found
+        }
+    
+        if (root.data === node.data) {
+            return depth;
+        }
+    
+        const leftDepth = getDepth(root.left, node, depth + 1);
+        if (leftDepth !== -1) {
+            return leftDepth;
+        }
+    
+        const rightDepth = getDepth(root.right, node, depth + 1);
+        return rightDepth;
+    }
 }
