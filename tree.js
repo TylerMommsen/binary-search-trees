@@ -84,16 +84,17 @@ export default class Tree {
         }
     }
 
+    // iteration
     levelOrder(func = null, root = this.root) {
         if (root === null) {
             return root;
         }
-        let order = [];
+        let resultOrder = [];
         let queue = [];
         queue.push(root);
         while (queue.length > 0) {
             let currentNode = queue.shift();
-            order.push(currentNode);
+            resultOrder.push(currentNode);
             if (currentNode.left !== null) {
                 queue.push(currentNode.left);
             }
@@ -101,6 +102,22 @@ export default class Tree {
                 queue.push(currentNode.right);
             }
         }
-        return order;
+        return resultOrder;
+    }
+
+    preorder(root = this.root) {
+        let resultOrder = [];
+
+        function dfs(root) {
+            if (root === null) {
+                return root;
+            }
+            resultOrder.push(root);
+            dfs(root.left);
+            dfs(root.right);
+        }
+
+        dfs(root);
+        return resultOrder;
     }
 }
