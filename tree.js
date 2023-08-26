@@ -105,6 +105,7 @@ export default class Tree {
         return resultOrder;
     }
 
+    // root, left, right
     preorder(root = this.root) {
         let resultOrder = [];
 
@@ -121,6 +122,7 @@ export default class Tree {
         return resultOrder;
     }
 
+    // left, root, right
     inorder(root = this.root) {
         let resultOrder = [];
 
@@ -137,6 +139,7 @@ export default class Tree {
         return resultOrder;
     }
 
+    // left, right, root
     postorder(root = this.root) {
         let resultOrder = [];
 
@@ -151,5 +154,16 @@ export default class Tree {
 
         dfs(root);
         return resultOrder;
+    }
+
+    height(root = this.root) {
+        if (root === null) {
+            return -1; // Height of an empty tree is -1
+        }
+    
+        const leftHeight = this.height(root.left);
+        const rightHeight = this.height(root.right);
+    
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 }

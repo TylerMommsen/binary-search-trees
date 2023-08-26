@@ -21,10 +21,11 @@ prettyPrint(BST.root);
 // let arr = BST.levelOrder();
 // let arr = BST.preorder();
 // let arr = BST.inorder();
-let arr = BST.postorder();
-let dataInArr = [];
+// let arr = BST.postorder();
+console.log(BST.height());
+// let dataInArr = [];
 
-arr.forEach(item => {
-    dataInArr.push(item.data);
-});
-console.log(dataInArr);
+// arr.forEach(item => {
+//     dataInArr.push(item.data);
+// });
+// console.log(dataInArr);
